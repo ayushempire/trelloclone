@@ -58,7 +58,6 @@ export default function Board() {
 
       newtodos.splice(destination.index, 0, start.list[source.index]); // spilce that with destination and source
 
-      //   console.log(newtodos);
       //   create new copy of object
       const newCol = {
         id: start.id,
