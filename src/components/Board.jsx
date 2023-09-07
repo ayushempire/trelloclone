@@ -7,8 +7,14 @@ export default function Board() {
 
   return (
     <div
-      className="d-flex flex-column m-5 justify-content-between"
-      style={{ minWidth: "128px" }}
+      style={{
+        minWidth: "128px",
+        display: "grid",
+        gridTemplateColumns: "1fr 1fr 1fr",
+        margin: "auto",
+        width: "80%",
+        gap: "8px",
+      }}
     >
       <div>
         <Column list={todos} />
