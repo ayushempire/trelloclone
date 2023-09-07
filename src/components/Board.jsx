@@ -12,6 +12,7 @@ export default function Board() {
         { id: 1, title: "item 1", desc: "hello world" },
         { id: 2, title: "item 2", desc: "hello world" },
         { id: 3, title: "item 3", desc: "hello wrold" },
+        { id: 4, title: "item 4", desc: "hello wrold" },
       ],
     },
     doing: {
@@ -126,9 +127,6 @@ export default function Board() {
       });
       console.log(uplists);
     });
-    // newlist = newlist.filter((e) => {
-    //   return e.list;
-    // });
 
     const newEndCol = {
       id: id,
@@ -139,37 +137,6 @@ export default function Board() {
       ...state,
       [newEndCol.id]: newEndCol,
     }));
-
-    // console.log(newEndCol
-    // console.log(id);
-
-    // let obj = {
-    //   id: id,
-    //   list: [
-    //     {
-    //       id: item.id,
-    //       title: item.title,
-    //       desc: item.desc,
-    //     },
-    //   ],
-    // };
-
-    // let newtodos;
-
-    // newtodos = Object.values(todos).filter((e) => {
-    //   return e.id === id;
-    // });
-
-    // // console.log(newtodos);
-    // newtodos = Object.values(newtodos).filter((e) => {
-    //   return e !== obj.list;
-    // });
-
-    // console.log(newtodos);
-
-    // // console.log(typeof newtodos);
-    // settodos(newtodos);
-    null;
   };
 
   return (
