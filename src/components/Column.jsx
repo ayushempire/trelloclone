@@ -4,7 +4,7 @@ import { Droppable } from "react-beautiful-dnd";
 
 export default function Column({ list }) {
   return (
-    <Droppable droppableId="col-z">
+    <Droppable droppableId="col-1">
       {(provided) => (
         <div
           className="d-flex flex-column"
