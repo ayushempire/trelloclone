@@ -7,7 +7,11 @@ export default function Board() {
   const initialColumns = {
     todo: {
       id: "todo",
-      list: ["item 1", "item 2", "item 3"],
+      list: [
+        { id: 1, title: "item 1", desc: "hello world" },
+        { id: 2, title: "item 2", desc: "hello world" },
+        { id: 3, title: "item 3", desc: "hello wrold" },
+      ],
     },
     doing: {
       id: "doing",

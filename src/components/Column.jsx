@@ -16,7 +16,7 @@ export default function Column({ col: { list, id } }) {
             ref={provided.innerRef}
           >
             {list.map((text, index) => (
-              <Item key={text} text={text} index={index} />
+              <Item key={text.id} text={text} index={index} />
             ))}
             {provided.placeholder}
           </div>
