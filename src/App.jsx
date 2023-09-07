@@ -1,5 +1,5 @@
 import Board from "./components/Board";
-import Navbar from "./components/Navbar";
+import Navbar from "./screens/Navbar";
 
 function App() {
   return (
