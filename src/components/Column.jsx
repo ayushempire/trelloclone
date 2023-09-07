@@ -1,12 +1,22 @@
 import React from "react";
 import Item from "./Item";
+import { Droppable } from "react-beautiful-dnd";
 
-export default function Column(props) {
+export default function Column({ list }) {
   return (
-    <div className="d-flex flex-column">
-      {props.list.map((text, index) => (
-        <Item key={text} text={text} index={index} />
-      ))}
-    </div>
+    <Droppable droppableId="col-z">
+      {(provided) => (
+        <div
+          className="d-flex flex-column"
+          {...provided.droppableProps}
+          ref={provided.innerRef}
+        >
+          {list.map((text, index) => (
+            <Item key={text} text={text} index={index} />
+          ))}
+          {provided.placeholder}
+        </div>
+      )}
+    </Droppable>
   );
 }
