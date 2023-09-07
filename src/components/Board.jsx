@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Column from "./Column";
 import { DragDropContext } from "react-beautiful-dnd";
+import Item from "./Item";
 
 export default function Board() {
   // for multiple columns made an usestate
@@ -104,6 +105,73 @@ export default function Board() {
     }
   };
 
+  // todo : deleteItem function
+
+  const deleteItem = (item, id) => {
+    let uplists;
+
+    let newtodo = Object.values(todos);
+    // console.log(newtodo);
+
+    let newlist;
+    newlist = newtodo.filter((e) => {
+      return e.id === id;
+    });
+
+    Object.values(newlist).filter((e) => {
+      const lists = e.list;
+
+      uplists = lists.filter((e) => {
+        return e !== item;
+      });
+      console.log(uplists);
+    });
+    // newlist = newlist.filter((e) => {
+    //   return e.list;
+    // });
+
+    const newEndCol = {
+      id: id,
+      list: uplists,
+    };
+
+    settodos((state) => ({
+      ...state,
+      [newEndCol.id]: newEndCol,
+    }));
+
+    // console.log(newEndCol
+    // console.log(id);
+
+    // let obj = {
+    //   id: id,
+    //   list: [
+    //     {
+    //       id: item.id,
+    //       title: item.title,
+    //       desc: item.desc,
+    //     },
+    //   ],
+    // };
+
+    // let newtodos;
+
+    // newtodos = Object.values(todos).filter((e) => {
+    //   return e.id === id;
+    // });
+
+    // // console.log(newtodos);
+    // newtodos = Object.values(newtodos).filter((e) => {
+    //   return e !== obj.list;
+    // });
+
+    // console.log(newtodos);
+
+    // // console.log(typeof newtodos);
+    // settodos(newtodos);
+    null;
+  };
+
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <div
@@ -117,7 +185,7 @@ export default function Board() {
         }}
       >
         {Object.values(todos).map((col) => (
-          <Column col={col} key={col.id} />
+          <Column col={col} key={col.id} deleteItem={deleteItem} />
         ))}
       </div>
     </DragDropContext>

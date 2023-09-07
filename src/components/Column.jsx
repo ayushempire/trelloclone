@@ -2,7 +2,7 @@ import React from "react";
 import Item from "./Item";
 import { Droppable } from "react-beautiful-dnd";
 
-export default function Column({ col: { list, id } }) {
+export default function Column({ col: { list, id }, deleteItem }) {
   return (
     <Droppable droppableId={id}>
       {(provided) => (
@@ -16,7 +16,13 @@ export default function Column({ col: { list, id } }) {
             ref={provided.innerRef}
           >
             {list.map((text, index) => (
-              <Item key={text.id} text={text} index={index} />
+              <Item
+                key={text.id}
+                text={text}
+                index={index}
+                colid={id}
+                deleteItem={deleteItem}
+              />
             ))}
             {provided.placeholder}
           </div>
