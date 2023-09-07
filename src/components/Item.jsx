@@ -10,7 +10,10 @@ export default function Item({ text, index }) {
           {...provided.draggableProps}
           {...provided.dragHandleProps}
         >
-          <h3>{text.title}</h3>
+          <div className="d-flex align-items-center">
+            <h3 className="me-auto">{text.title}</h3>
+            <button className="btn ">X</button>
+          </div>
           <h5>{text.desc}</h5>
         </div>
       )}
