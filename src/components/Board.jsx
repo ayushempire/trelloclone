@@ -11,9 +11,11 @@ export default function Board() {
       style={{ minWidth: "128px" }}
     >
       <div>
-        {todos.map((column, index) => (
-          <Column key={column} column={column} index={index} />
-        ))}
+        <Column list={todos} />
+
+        {/* {todos.map((text, index) => (
+          <Item key={text} column={text} index={index} />
+        ))} */}
       </div>
     </div>
   );
