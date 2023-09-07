@@ -1,10 +1,11 @@
+import Board from "./components/Board";
 import Navbar from "./components/Navbar";
 
 function App() {
   return (
     <>
       <Navbar />
-      <div>board</div>
+      <Board />
     </>
   );
 }
