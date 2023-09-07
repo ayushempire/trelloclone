@@ -68,6 +68,36 @@ export default function Board() {
 
       //   // update the state
       settodos((state) => ({ ...state, [newCol.id]: newCol }));
+    } else {
+      // filter the start list like before
+      const newStartList = [...start.list];
+      newStartList.splice(source.index, 1);
+
+      // if start is differ from end , we need to upddate multiple columns
+      // create new start column
+      const newStartCol = {
+        id: start.id,
+        list: newStartList,
+      };
+
+      // make a new end list array
+      const newEndList = [...end.list];
+
+      // insert the item into the end list
+      newEndList.splice(destination.index, 0, start.list[source.index]);
+
+      // create a  new end column
+      const newEndCol = {
+        id: end.id,
+        list: newEndList,
+      };
+
+      // update the state
+      settodos((state) => ({
+        ...state,
+        [newStartCol.id]: newStartCol,
+        [newEndCol.id]: newEndCol,
+      }));
     }
   };
 
