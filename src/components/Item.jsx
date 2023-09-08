@@ -11,7 +11,7 @@ export default function Item({ text, index, colid, deleteItem }) {
       {(provided) => (
         <div
           style={{ minWidth: "min-content" }}
-          className="  mt-2 p-1 "
+          className="  mt-2 p-1 bg-light border border-2 norder-dark  "
           ref={provided.innerRef}
           {...provided.draggableProps}
           {...provided.dragHandleProps}
@@ -22,7 +22,7 @@ export default function Item({ text, index, colid, deleteItem }) {
               X
             </button>
           </div>
-          <h5>{text.desc}</h5>
+          <p>{text.desc}</p>
         </div>
       )}
     </Draggable>
