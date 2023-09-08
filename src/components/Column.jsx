@@ -2,9 +2,20 @@ import React, { useState } from "react";
 import Item from "./Item";
 import { Droppable } from "react-beautiful-dnd";
 
-export default function Column({ col: { list, id }, deleteItem }) {
+export default function Column({ col: { list, id }, deleteItem, addItem }) {
+  // usestate to store new itemsa/tasks/todos
+  const [newitem, setnewitem] = useState({
+    title: "",
+    desc: "",
+  });
+
   // use state for add new item
   const [flag, setflag] = useState(false);
+
+  // fuction to add new item
+  const additem = (e) => {
+    addItem(id, newitem);
+  };
 
   return (
     <div>
@@ -45,10 +56,25 @@ export default function Column({ col: { list, id }, deleteItem }) {
         </div>
       ) : (
         <div className="d-flex flex-column gap-1">
-          <input className="rounded " type="text" placeholder="title" />
-          <textarea type="text" placeholder="desc" />
+          <input
+            className="rounded "
+            type="text"
+            placeholder="title"
+            value={setnewitem.title}
+            onChange={(e) => setnewitem({ ...newitem, title: e.target.value })}
+          />
+          <textarea
+            type="text"
+            placeholder="desc"
+            value={setnewitem.desc}
+            onChange={(e) => setnewitem({ ...newitem, desc: e.target.value })}
+          />
           <div className="d-flex justify-content-around">
-            <button className="btn border-success" type="button">
+            <button
+              className="btn border-success"
+              type="button"
+              onClick={additem}
+            >
               add
             </button>
             <button

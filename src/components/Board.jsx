@@ -28,7 +28,7 @@ export default function Board() {
   // column array basic
   const [todos, settodos] = useState(initialColumns);
 
-  //   /ondrag end function
+  //   todo: ondrag end function
   const onDragEnd = ({ source, destination }) => {
     // valid destination
     if (destination === undefined || destination === null) {
@@ -139,6 +139,49 @@ export default function Board() {
     }));
   };
 
+  // todo : add new item function
+  const addItem = (cid, todo) => {
+    let itemid;
+    let lists;
+    // let uplists;
+
+    if (todos[cid].list.length === 0) {
+      itemid = 1;
+    } else {
+      itemid = todos[cid].list.length + 1;
+    }
+
+    const data = {
+      id: itemid,
+      title: todo.title,
+      desc: todo.desc,
+    };
+
+    let newtodo = Object.values(todos);
+    // console.log(newtodo);
+
+    let newlist;
+    newlist = newtodo.filter((e) => {
+      return e.id === cid;
+    });
+
+    Object.values(newlist).filter((e) => {
+      lists = e.list;
+
+      lists.push(data);
+      console.log(lists);
+    });
+
+    const newEndCol = {
+      id: cid,
+      list: lists,
+    };
+    settodos((state) => ({
+      ...state,
+      [newEndCol.id]: newEndCol,
+    }));
+  };
+
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <div
@@ -152,7 +195,12 @@ export default function Board() {
         }}
       >
         {Object.values(todos).map((col) => (
-          <Column col={col} key={col.id} deleteItem={deleteItem} />
+          <Column
+            col={col}
+            key={col.id}
+            deleteItem={deleteItem}
+            addItem={addItem}
+          />
         ))}
       </div>
     </DragDropContext>
