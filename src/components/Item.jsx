@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { Draggable } from "react-beautiful-dnd";
 import { Edit } from "react-feather";
+import Model from "../../Model";
 
 export default function Item({ text, index, colid, deleteItem }) {
+  // for edit item state
+  const [editview, seteditview] = useState(false);
+
   const deleteitem = () => {
     deleteItem(text, colid);
   };
@@ -25,9 +29,10 @@ export default function Item({ text, index, colid, deleteItem }) {
           </div>
           <div className="d-flex align-items-end">
             <p className="me-auto">{text.desc}</p>
-            <button className="btn">
+            <button className="btn" onClick={() => seteditview(true)}>
               <Edit style={{ height: "18px", width: "18px" }} />
             </button>
+            {editview ? <Model onClose={() => seteditview(false)} /> : ""}
           </div>
         </div>
       )}
