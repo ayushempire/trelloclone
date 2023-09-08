@@ -14,7 +14,12 @@ export default function Column({ col: { list, id }, deleteItem, addItem }) {
 
   // fuction to add new item
   const additem = (e) => {
-    addItem(id, newitem);
+    if (newitem.title === "" || newitem.desc === "") {
+      alert("please enter title or description");
+    } else {
+      addItem(id, newitem);
+      setflag(false);
+    }
   };
 
   return (

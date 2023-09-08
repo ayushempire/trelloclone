@@ -152,7 +152,7 @@ export default function Board() {
     }
 
     const data = {
-      id: itemid,
+      id: Date.now() + Math.random(),
       title: todo.title,
       desc: todo.desc,
     };
@@ -180,6 +180,7 @@ export default function Board() {
       ...state,
       [newEndCol.id]: newEndCol,
     }));
+    console.log(todos);
   };
 
   return (
