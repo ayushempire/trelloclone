@@ -60,15 +60,19 @@ export default function Column({ col: { list, id }, deleteItem, addItem }) {
           </button>
         </div>
       ) : (
-        <div className="d-flex flex-column gap-1">
+        <div className="d-flex flex-column gap-1 ">
           <input
-            className="rounded "
+            style={{ border: ".2rem solid grey", outline: "none" }}
+            className="rounded p-2 border-success text-dark "
             type="text"
+            autoFocus
             placeholder="title"
             value={setnewitem.title}
             onChange={(e) => setnewitem({ ...newitem, title: e.target.value })}
           />
           <textarea
+            style={{ border: ".2rem solid grey", outline: "none" }}
+            className="rounded p-2 border-success text-dark  "
             type="text"
             placeholder="desc"
             value={setnewitem.desc}

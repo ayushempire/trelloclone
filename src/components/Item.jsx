@@ -10,7 +10,8 @@ export default function Item({ text, index, colid, deleteItem }) {
     <Draggable key={text.id} draggableId={`${text.id}`} index={index}>
       {(provided) => (
         <div
-          className="  mt-2 p-3 w-100"
+          style={{ minWidth: "min-content" }}
+          className="  mt-2 p-1 "
           ref={provided.innerRef}
           {...provided.draggableProps}
           {...provided.dragHandleProps}
