@@ -32,7 +32,15 @@ export default function Item({ text, index, colid, deleteItem }) {
             <button className="btn" onClick={() => seteditview(true)}>
               <Edit style={{ height: "18px", width: "18px" }} />
             </button>
-            {editview ? <Model onClose={() => seteditview(false)} /> : ""}
+            {editview ? (
+              <Model
+                onClose={() => seteditview(false)}
+                item={text}
+                colid={colid}
+              />
+            ) : (
+              ""
+            )}
           </div>
         </div>
       )}
