@@ -69,7 +69,7 @@ export default function Board() {
         id: start.id,
         list: newtodos,
       };
-      console.log(newCol);
+      // console.log(newCol);
 
       //   // update the state
       settodos((state) => ({ ...state, [newCol.id]: newCol }));
@@ -125,7 +125,7 @@ export default function Board() {
       uplists = lists.filter((e) => {
         return e !== item;
       });
-      console.log(uplists);
+      // console.log(uplists);
     });
 
     const newEndCol = {
@@ -141,21 +141,22 @@ export default function Board() {
 
   // todo : add new item function
   const addItem = (cid, todo) => {
-    let itemid;
     let lists;
     // let uplists;
 
-    if (todos[cid].list.length === 0) {
-      itemid = 1;
-    } else {
-      itemid = todos[cid].list.length + 1;
-    }
+    // if (todos[cid].list.length === 0) {
+    //   itemid = 1;
+    // } else {
+    //   itemid = todos[cid].list.length + 1;
+    // }
+    // todo id setup
 
     const data = {
       id: Date.now() + Math.random(),
       title: todo.title,
       desc: todo.desc,
     };
+    // todo end of id setup
 
     let newtodo = Object.values(todos);
     // console.log(newtodo);
@@ -169,7 +170,7 @@ export default function Board() {
       lists = e.list;
 
       lists.push(data);
-      console.log(lists);
+      // console.log(lists);
     });
 
     const newEndCol = {
@@ -180,8 +181,49 @@ export default function Board() {
       ...state,
       [newEndCol.id]: newEndCol,
     }));
-    console.log(todos);
+    // console.log(todos);
   };
+
+  // todo : edit item functio
+  const editItem = (id, item) => {
+    console.log(item.id);
+    let uplists;
+
+    const data = {
+      id: item.id,
+      title: item.title,
+      desc: item.desc,
+    };
+
+    let newtodo = Object.values(todos);
+    // console.log(newtodo);
+
+    let newlist;
+    newlist = newtodo.filter((e) => {
+      return e.id === id;
+    });
+
+    Object.values(newlist).filter((e) => {
+      const lists = e.list;
+
+      uplists = lists.filter((e) => {
+        return e.id !== item.id;
+      });
+
+      uplists.push(data);
+    });
+
+    const newEndCol = {
+      id: id,
+      list: uplists,
+    };
+
+    settodos((state) => ({
+      ...state,
+      [newEndCol.id]: newEndCol,
+    }));
+  };
+  // console.log(todos);
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
@@ -201,6 +243,7 @@ export default function Board() {
             key={col.id}
             deleteItem={deleteItem}
             addItem={addItem}
+            editItem={editItem}
           />
         ))}
       </div>

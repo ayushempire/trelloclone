@@ -3,7 +3,7 @@ import { Draggable } from "react-beautiful-dnd";
 import { Edit } from "react-feather";
 import Model from "../../Model";
 
-export default function Item({ text, index, colid, deleteItem }) {
+export default function Item({ text, index, colid, deleteItem, editItem }) {
   // for edit item state
   const [editview, seteditview] = useState(false);
 
@@ -37,6 +37,7 @@ export default function Item({ text, index, colid, deleteItem }) {
                 onClose={() => seteditview(false)}
                 item={text}
                 colid={colid}
+                editItem={editItem}
               />
             ) : (
               ""

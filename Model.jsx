@@ -22,13 +22,22 @@ const OVERLAY_STYLES = {
   zIndex: 1000,
 };
 
-export default function Model({ item: { id, title, desc }, onClose }) {
+export default function Model({
+  item: { id, title, desc },
+  onClose,
+  colid,
+  editItem,
+}) {
   // usestate htmlFor edit task
   const [edittask, setedittask] = useState({
     id: id,
     title: title,
     desc: desc,
   });
+
+  const edititem = () => {
+    editItem(colid, edittask);
+  };
 
   return ReactDom.createPortal(
     <>
@@ -46,6 +55,19 @@ export default function Model({ item: { id, title, desc }, onClose }) {
           <h1 className="text-center">Edit task</h1>
 
           <form>
+            <div className="mb-3">
+              <label htmlFor="id" className="form-label">
+                ID
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                id="id"
+                aria-describedby="emailHelp"
+                value={edittask.id}
+                readOnly
+              />
+            </div>
             <div className="mb-3">
               <label htmlFor="exampleInputEmail1" className="form-label">
                 Title
@@ -65,7 +87,7 @@ export default function Model({ item: { id, title, desc }, onClose }) {
               <label htmlFor="exampleInputPassword1" className="form-label">
                 description
               </label>
-              <input
+              <textarea
                 type="text"
                 className="form-control"
                 id="exampleInputPassword1"
@@ -79,9 +101,7 @@ export default function Model({ item: { id, title, desc }, onClose }) {
             <button
               type="button"
               className="btn btn-success"
-              onClick={() => {
-                console.log(edittask);
-              }}
+              onClick={edititem}
             >
               Submit
             </button>

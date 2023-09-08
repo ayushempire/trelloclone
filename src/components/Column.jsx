@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import Item from "./Item";
 import { Droppable } from "react-beautiful-dnd";
 
-export default function Column({ col: { list, id }, deleteItem, addItem }) {
+export default function Column({
+  col: { list, id },
+  deleteItem,
+  addItem,
+  editItem,
+}) {
   // usestate to store new itemsa/tasks/todos
   const [newitem, setnewitem] = useState({
     title: "",
@@ -42,6 +47,7 @@ export default function Column({ col: { list, id }, deleteItem, addItem }) {
                   index={index}
                   colid={id}
                   deleteItem={deleteItem}
+                  editItem={editItem}
                 />
               ))}
               {provided.placeholder}
@@ -80,14 +86,14 @@ export default function Column({ col: { list, id }, deleteItem, addItem }) {
           />
           <div className="d-flex justify-content-around">
             <button
-              className="btn border-success"
+              className="btn border-success btn-success"
               type="button"
               onClick={additem}
             >
               add
             </button>
             <button
-              className="btn border-danger"
+              className="btn border-danger btn-danger"
               type="button"
               onClick={(e) => setflag(false)}
             >
