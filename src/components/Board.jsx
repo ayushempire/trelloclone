@@ -142,13 +142,7 @@ export default function Board() {
   // todo : add new item function
   const addItem = (cid, todo) => {
     let lists;
-    // let uplists;
 
-    // if (todos[cid].list.length === 0) {
-    //   itemid = 1;
-    // } else {
-    //   itemid = todos[cid].list.length + 1;
-    // }
     // todo id setup
 
     const data = {

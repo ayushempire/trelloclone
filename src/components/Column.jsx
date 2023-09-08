@@ -28,11 +28,13 @@ export default function Column({
   };
 
   return (
-    <div>
+    <div className=" mt-2 py-1">
       <Droppable droppableId={id}>
         {(provided) => (
-          <div className="d-flex flex-column mt-2 bg-light border-dark">
-            <h2 className="text-center text-white bg-dark pb-2">{id}</h2>
+          <div className="d-flex flex-column  bg-light ">
+            <h2 className="text-center bg-warning pb-2 text-dark border border-dark rounded-3">
+              {id}
+            </h2>
 
             <div
               className="d-flex flex-column p-2"

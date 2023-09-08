@@ -3,13 +3,14 @@ import React from "react";
 export default function Navbar() {
   return (
     <div>
-      <nav className=" navbar navbar-expand-lg bg-body-tertiary">
-        <div className="container-fluid">
-          <a className="navbar-brand" href="#">
-            Todo App
+      <nav className=" navbar navbar-expand-lg bg-dark">
+        <div className="container-fluid d-flex">
+          <a className="navbar-brand me-auto" href="#">
+            <img src="kmslogo.svg" width="180" height="45" />
           </a>
+
           <button
-            className="navbar-toggler"
+            className="navbar-toggler bg-white"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent"
@@ -19,20 +20,18 @@ export default function Navbar() {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#">
-                  Home
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  about
-                </a>
-              </li>
-            </ul>
-          </div>
+        </div>
+        <div
+          className="collapse navbar-collapse me-2 ms-2"
+          id="navbarSupportedContent"
+        >
+          <button
+            className="btn btn-warning active text-dark fw-bold mt-1"
+            aria-current="page"
+            href="#"
+          >
+            Logout
+          </button>
         </div>
       </nav>
     </div>
