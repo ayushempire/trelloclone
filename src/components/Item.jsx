@@ -1,5 +1,6 @@
 import React from "react";
 import { Draggable } from "react-beautiful-dnd";
+import { Edit } from "react-feather";
 
 export default function Item({ text, index, colid, deleteItem }) {
   const deleteitem = () => {
@@ -22,7 +23,12 @@ export default function Item({ text, index, colid, deleteItem }) {
               X
             </button>
           </div>
-          <p>{text.desc}</p>
+          <div className="d-flex align-items-end">
+            <p className="me-auto">{text.desc}</p>
+            <button className="btn">
+              <Edit style={{ height: "18px", width: "18px" }} />
+            </button>
+          </div>
         </div>
       )}
     </Draggable>
